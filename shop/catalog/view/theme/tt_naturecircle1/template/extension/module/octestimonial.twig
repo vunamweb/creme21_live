@@ -1,0 +1,171 @@
+<div class="testimonial-container ">
+<div class="container-inner">
+	<div class="module-title">
+		<h2>
+			{{ title }}
+		</h2>
+	</div>
+	{% set count = 0 %}
+	{% if rows %}		
+		{% set rows = slide.rows %}
+	{% else %}
+		{% set rows = 1 %}
+	{% endif %}
+	{% if testimonials %}
+		<div class="block-content">
+			<div id="slides" class="owl-carousel owl-theme">
+				{% for testimonial in testimonials %}
+					{% if count % rows == 0 %}
+					<div class="row_items">
+					{% endif %}
+					{% set count = count + 1 %}
+					<div class="testimonial-content">
+						<div class="testimonial-box">							
+							<a href="{{ more }}">{{ testimonial.content }}</a>
+						</div>
+						
+						
+					</div><!--testimonial-content-->
+					{% if count % rows == 0 or count == testimonials|length %}
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+			<ul class="thumb owl-carousel owl-theme" id="sync2">
+				{% set i, j = 0, 0 %}
+				{% for testimonial in testimonials %}
+					{% if testimonial.content %}
+					<li class="testithumb{{ j }} {{ (j == 0) ? 'active' : '' }}" onclick="">
+						{% set j = j + 1 %}
+						{% if testimonial.image %}
+						<img src="{{ testimonial.image }}" alt="{{ testimonial.customer_name }}">
+						{% endif %}
+						<span class="testimonial-author">{{ testimonial.customer_name }}</span>
+					</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div><!--block-content-->
+	{% else %}
+		<p class="text_empty">{{ text_empty }}</p>
+	{% endif %}
+</div>
+</div><!--testimonial-container-->					
+<script >
+$(document).ready(function() {
+	var sync1 = $("#slides");
+	var sync2 = $("#sync2");
+	var syncedSecondary = true;
+	
+    sync1.owlCarousel({
+		autoPlay : {% if slide['auto'] %} {{ slide['auto'] }} {% else %} false {% endif %},
+		items : {{ slide['items'] }},	
+		loop: true,
+		margin: 30,
+		navSpeed : {{ slide['speed'] }},
+		dotsSpeed : {{ slide['speed'] }},
+		autoplaySpeed : {{ slide['speed'] }},
+		nav : {% if slide['navigation'] %} true  {% else %} false {% endif %},
+		dots :{% if slide['pagination'] %} true {% else %} false {% endif %},
+		lazyLoad: true,
+		navText : ['<i class="ion-ios-arrow-left"></i>','<i class="ion-ios-arrow-right"></i>'],
+		responsive:{
+			0:{
+				items: 1,
+				nav: false
+			},
+			480:{
+				items: 1,
+				nav: false
+			},
+			768:{
+				items: 1
+			},
+			980:{
+				items: 1
+			}
+		}
+    }).on('changed.owl.carousel', syncPosition);
+	
+	sync2.on('initialized.owl.carousel', function () {
+      sync2.find(".owl-item").eq(0).addClass("current");
+    })
+	.owlCarousel({
+		autoPlay : {% if slide['auto'] %} {{ slide['auto'] }} {% else %} false {% endif %},
+		margin: 0,
+		navSpeed : {{ slide['speed'] }},
+		dotsSpeed : {{ slide['speed'] }},
+		autoplaySpeed : {{ slide['speed'] }},
+		nav : false,
+		dots :false,
+		lazyLoad: true,
+		navText : ['<i class="ion-ios-arrow-left"></i>','<i class="ion-ios-arrow-right"></i>'],
+		responsive:{
+			0:{
+				items: 2,
+				nav: false
+			},
+			480:{
+				items: 3,
+				nav: false
+			},
+			768:{
+				items: 3
+			},
+			992:{
+				items: 3
+			},
+			1200:{
+				items: 3
+			}
+		}
+    }).on('changed.owl.carousel', syncPosition2);
+	
+	function syncPosition(el) {
+    //if you set loop to false, you have to restore this next line
+    //var current = el.item.index;
+    
+    //if you disable loop you have to comment this block
+    var count = el.item.count-1;
+    var current = Math.round(el.item.index - (el.item.count/2) - .5);
+    
+    if(current < 0) {
+      current = count;
+    }
+    if(current > count) {
+      current = 0;
+    }
+    
+    //end block
+
+    sync2
+      .find(".owl-item")
+      .removeClass("current")
+      .eq(current)
+      .addClass("current");
+    var onscreen = sync2.find('.owl-item.active').length - 1;
+    var start = sync2.find('.owl-item.active').first().index();
+    var end = sync2.find('.owl-item.active').last().index();
+    
+    if (current > end) {
+      sync2.data('owl.carousel').to(current, 100, true);
+    }
+    if (current < start) {
+      sync2.data('owl.carousel').to(current - onscreen, 100, true);
+    }
+  }
+  
+  function syncPosition2(el) {
+    if(syncedSecondary) {
+      var number = el.item.index;
+      sync1.data('owl.carousel').to(number, 100, true);
+    }
+  }
+  
+  sync2.on("click", ".owl-item", function(e){
+    e.preventDefault();
+    var number = $(this).index();
+    sync1.data('owl.carousel').to(number, 300, true);
+  });
+});
+</script>

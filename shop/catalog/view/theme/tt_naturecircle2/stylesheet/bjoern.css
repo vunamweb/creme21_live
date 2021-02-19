@@ -1,0 +1,222 @@
+body { overflow-x: hidden; }
+.btn-info, .btn.btn-primary {
+    font-size: 14px;
+    line-height: 42px;
+    padding: 0 25px;
+    background: #EE7601;
+    float: left;
+    margin-top: 0;
+    font-weight: 500;
+    border-radius: 20px;
+    margin-right: 15px;
+    color: #fff;
+    border: none;
+    margin-top: 16px;
+}
+.btn { text-transform: none !important; font-family:"filson-soft" !important; font-weight: 500 !important; font-size: 14px !important; }
+#search .input-group-btn button {
+    background: #00ACD8; }
+.box-hover .button {
+	margin-top: 1em;
+}
+.box-hover { bottom: -10px !important; }
+.price-each { display: block; color: #000; font-size: .9em; font-weight: 300; }
+.product-info-main .button-cart {
+    float: right;
+}
+p.name_product {
+    margin-top: 15px;
+    display: inline-block;
+    /*padding-left: 10px;*/
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+p.name_product span {
+    font-weight: 800;
+}
+.price-box span.price { font-size: 1.75rem; color: #414042; font-weight: 600; }
+.product-name { margin-bottom: 0; }
+.product-info-main .product-name {
+    text-transform: inherit;
+}
+.footer-bottom .footer-copyright {
+    text-transform: inherit;
+}
+.footer-bottom .footer-copyright a {
+    color: #00ACD8; text-transform: none;
+}
+#notification-normal div.warning {
+    color: red;
+    text-align: center;
+    background: red;
+    color: #fff;
+    font-weight: 500;
+}
+
+
+.banner7-content .title1 {
+	font-family:"filson-soft";
+    font-size: 30px;
+    text-transform: inherit;
+    line-height: 1;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.banner7-content .sub-title {
+	font-family:"filson-soft";
+    font-size: 100px;
+    color: #2c2c2c;
+    font-weight: 500;
+    text-transform: inherit;
+    line-height: 0.85;
+    margin-bottom: 26px;
+    margin-top: 0;
+}
+
+.banner7-content .banner7-des p {
+	font-family:"filson-soft";
+    font-size: 16px;
+    margin: auto;
+    padding: 0;
+    color: #444444;
+    text-transform: none;
+    font-weight: 500;
+    max-width: 480px;
+    line-height: 15px;
+}
+
+
+.btnGoshop_de {
+	padding-left: 0;
+}
+
+.module-title h2:before {
+    content: "";
+    display: block;
+    background: url(../image/logo.svg) center no-repeat;
+    height: 72px;
+    width: 70px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background-size: cover;
+    padding-top: 20px;
+}
+.module-title:before, .module-title:after {
+    top: 25%;
+}
+
+.product-name a {
+    color: #202226;
+    padding: 0;
+    display: block;
+    text-transform: inherit; 
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 500;
+}    
+ 
+.filter-attribute-container label {
+    text-transform: none;
+    font-family:"filson-soft" ; font-size: 16px;
+} 
+.filter-attribute-container .list-group-item a.add-filter {
+    font-size: 16px;
+}   
+.filter-attribute-container label {
+    font-weight: 500;
+}
+.category-module {
+    margin-bottom: 20px;
+}    
+.category-module h3 {
+    font-size: 16px; color: #363636;
+}  
+
+.alert alert-success alert-dismissible a, .alert-success a { font-weight: 500; }
+
+.agb h2 { font-size: 1.5em; }
+.agb h3 { font-size: 1em; color: #00ACD8; }
+.agb h1 { font-size: 2em; color: #00ACD8; }
+
+.box_color {
+    background: #F2F2F2;
+    border-radius: 10px;
+    padding: 0px 0px 30px;
+}
+.box_color img/* , .card.image img */ {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.box_color .inner, .banner-static .inner {
+    padding: 20px 20px ;
+}
+.cms .box_color .inner, .banner-static .inner {
+    padding: 10px 10px ;
+}
+
+.checkout-cart .btn.btn-primary { margin-top: 0; line-height: 34px; padding: 0 20px; }
+.checkout-cart input.form-control { }
+.input-group-btn { white-space: normal; margin-left: 5px; }
+
+header { margin-bottom: 0px; }
+.logo-container { margin: 30px 0; }      
+
+.pt_custommenu .column > .itemMenu > .itemMenuName {
+	font-family: 'filson-pro'; font-size: 1em; text-transform: none;
+}
+.newletter-subscribe-container {  display: none;  }
+
+.account-register h1, .checkout-cart h1, .checkout-checkout h1, .account-edit h1, .home2 h1 { font-size: 2em; color: #EE7601; }
+table td { color: #414042; }
+.impressum { margin-left: 16.66666667%; }
+b, strong {
+    font-weight: 600;
+}
+
+span.status { display: inline-block; width: 15px; height: 15px; background: red; margin: 0 auto; }
+span.status.onstock { background: green; }
+.product-name.detail { margin-bottom: 0; }
+.not-active { 
+    text-transform: none !important;
+    font-family: "filson-soft" !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    line-height: 42px;
+    padding: 0 25px;
+    background: #00ACD8;
+    float: left;
+    margin-top: 12.5px;
+    border-radius: 20px;
+    margin-right: 15px;
+    background: #ccc !important; 
+	color: #f2f2f2 !important; 
+}
+
+
+h1.cms { font-size: 2em; color: #00ACD8; }
+h2.cms { font-size: 1.5em; }
+h3.cms { font-size: 1em; color: #164194; margin-top: 0; line-height: 1.4em; }
+h5 { font-size: 1em; color: #00ACD8; }
+
+.cms p, p.cms { font-weight: 300; color: #000; line-height: 1.5em; }
+.cms:first-child .col-md-4 { /* padding-left: 0; */ }
+
+.short-des h1 {
+    font-size: 1em;
+    color: #00ACD8;
+}
+.payment img { height: 35px; max-width: 500px; }
+.underl { text-decoration: underline }
+.name_product.new { font-size: .9em; }
+.related-products .name_product.new span { font-size: 1em; }
+.nobordertop { padding: 0 !important; border-top: none !important; }
+
+.short-des h1 { font-size: 1em !important; color: #00ACD8 !important; } 
+img.mixmask { width: 40px!important; float: left; margin-right: 10px; }
+.mmask { display: inline-block; border: solid 1px #eee; width: 100%; font-size: inherit; font-weight: 300; min-height: 60px; }
+.mmask:hover { background: #eee; }
+.check_mix_mask { position: absolute; right: 0; }
+
+.mt0 { margin-top: 0px; } .mt1 { margin-top: 10px; } .mt2 { margin-top: 20px; } .mt3 { margin-top: 30px; } .mt4 { margin-top: 40px; } .mt5 { margin-top: 50px; } .mt6 { margin-top: 60px; } .mt7 { margin-top: 70px; } .mt8 { margin-top: 80px; } .mt9 { margin-top: 90px; } .mt10 { margin-top: 100px; }  .mb0 { margin-bottom: 0px; }  .mb1 { margin-bottom: 10px; }  .mb2 { margin-bottom: 20px; }  .mb3 { margin-bottom: 30px; }  .mb4 { margin-bottom: 40px; }  .mb5 { margin-bottom: 50px; }  .mb6 { margin-bottom: 60px; }  .mb7 { margin-bottom: 70px; }  .mb8 { margin-bottom: 80px; }  .mb9 { margin-bottom: 90px; }  .mb10 { margin-bottom: 100px; }  .pad0 { padding: 0px; }  .pad1 { padding: 10px; }  .pad2 { padding: 20px; }  .pad3 { padding: 30px; }  .pad4 { padding: 40px; }  .pad5 { padding: 50px; }  .pad6 { padding: 60px; }  .pad7 { padding: 70px; }  .pad8 { padding: 80px; }  .pad9 { padding: 90px; }  .pad10 { padding: 100px; }  .pt0 { padding-top: 0px; }  .pt1 { padding-top: 10px; }  .pt2 { padding-top: 20px; }  .pt3 { padding-top: 30px; }  .pt4 { padding-top: 40px; }  .pt5 { padding-top: 50px; }  .pt6 { padding-top: 60px; }  .pt7 { padding-top: 70px; }  .pt8 { padding-top: 80px; }  .pt9 { padding-top: 90px; }  .pt10 { padding-top: 100px; }  .pb0 { padding-bottom: 0px; }  .pb1 { padding-bottom: 10px; }  .pb2 { padding-bottom: 20px; }  .pb3 { padding-bottom: 30px; }  .pb4 { padding-bottom: 40px; }  .pb5 { padding-bottom: 50px; }  .pb6 { padding-bottom: 60px; }  .pb7 { padding-bottom: 70px; }  .pb8 { padding-bottom: 80px; }  .pb9 { padding-bottom: 90px; }  .pb10 { padding-bottom: 100px; }

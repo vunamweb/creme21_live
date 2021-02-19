@@ -1,0 +1,1 @@
+<?php $navID = array(1=>"home_block2/", 12=>"home_block4/", 13=>"home_block5/", 14=>"footer_social/", 15=>"footer_col1/", 16=>"footer_col_last/", 18=>"groessentabelle/", 19=>"shop-start-einleitung/", 20=>"shop_content/", 22=>"muttertag/", 23=>"factory-outlet/", 24=>"pruefergebnisse/", 21=>"footer_col1/groessentabelle/"); ?>

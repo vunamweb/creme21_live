@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html dir="{{ direction }}" lang="{{ lang }}">
+
+ <style>
+    .table_padding {
+      width: 50px;
+    }
+    .table_padding_1 {
+      width: 70px;
+    }
+    @font-face {
+        font-family: "Univers BlackExt";
+        src: url(/dompdf/Univers/Univers-BlackExt.otf);
+   }
+   @font-face {
+        font-family: 'Univers-55';
+        src: url(/dompdf/Univers/Univers.otf);
+   }
+   @font-face {
+        font-family:"Univers-55-Light" ;
+        src: url(/dompdf/Univers/Univers-Bold.otf);
+   }
+   @page {  margin-bottom: 0px; }
+   html { margin-bottom: 0px; margin-left: 60px; margin-right: 80px; }
+   body,h1,h2,h3,h4,h5,div,table,tr,td,p{font-family: 'Univers-55'; }
+   strong, b, i, em { font-family: 'Univers-55'; font-weight: 700 }
+   td { padding: 0; margin: 0; }
+   .text-right { text-align: right; }
+   p.name_product {
+     margin-top: 15px;
+     line-height: 1.5em;
+     /*text-align: center;*/
+   }
+   p.name_product span { 
+     font-size: 80%;
+     margin-left: 5px;
+   }
+</style>
+
+<body style="font-family: 'Univers-55'; font-size: 10px; color: #000000;">
+    
+<div class="container">
+  {% for order in orders %}
+  <div>
+    <table style="width: 100%; margin-bottom: 30px;">
+      <tbody>
+        <tr>
+          <td style="width: 70%;">
+            <img width="100px" src="../image/catalog/logo.png" />
+          </td>
+          <td style="width: 30%; font-family: 'Univers-55'; font-size: 11px; color: #000000;display:none">
+            {{ order.store_name }}<br />
+            {{ order.store_address }}<br />
+
+            <span>{{ text_telephone }}</span>&nbsp; {{ order.store_telephone }}<br />
+            {% if order.store_fax %}
+            <span>{{ text_fax }}</span>&nbsp; {{ order.store_fax }}<br />
+            {% endif %}
+            <span>{{ text_email }}</span> &nbsp;{{ order.store_email }}<br />
+            <span>{{ text_website }}</span>&nbsp; <a href="{{ order.store_url }}">{{ order.store_url }}</a></td>
+         </tr>
+     </table>
+     
+     <table style="width: 100%; margin-bottom: 30px;font-family: 'Univers-55'; font-size: 12px; color: #000000;">    
+         <tr>
+           <td style="width: 30%;font-family: 'Univers-55'; font-size: 12px; color: #000000;">
+              <b>Rechnungsadresse:</b>
+              <br>
+              {{ order.payment_address }}
+           </td> 
+           <td style="width: 30%;font-family: 'Univers-55'; font-size: 12px; color: #000000;">
+              <b>Lieferadresse:</b>
+              <br>
+              {{ order.shipping_address }}
+           </td>  
+           <td style="width: 40%;font-family: 'Univers-55'; font-size: 12px; color: #000000;">
+            <span>Rechnungsnummer: </span> &nbsp;{{ order.order_id }}<br />
+            {% if order.invoice_no %}
+            <span>{{ text_invoice_no }}: </span>&nbsp; {{ order.invoice_no }}<br />
+            {% endif %}
+            <span>Kundennummer: </span> &nbsp; <br />
+            <span>Rechnungsdatum: </span> &nbsp; {{ order.date_added }}<br />
+            <span>{{ text_payment_method }}: </span>&nbsp; {{ order.payment_method }}<br />
+            {% if order.shipping_method %}
+            <span>{{ text_shipping_method }}: </span>&nbsp;{{ order.shipping_method }}<br />
+            {% endif %}</td>
+         </tr>   
+      </tbody>
+    </table>
+    <p style="margin-bottom: 30px; font-family: 'Univers-55'; font-size: 12px; color: #000000;" >&nbsp;</p>
+    <p style="margin-bottom: 30px; font-family: 'Univers-55'; font-size: 12px; color: #000000;" >Rechnung</p>
+    <table style="width: 100%;">
+      <thead>
+        <tr valign="top" style="background: #ccc">
+          <td style=""><span>Pos</span></td>
+          <td style=""><span>{{ column_model }}</span></td>
+          <td style=""><span>{{ column_product }}</span></td>
+          <td class="text-right" style=""><span>{{ column_price }}</span></td>
+          <td class="text-right" style=""><span>{{ column_quantity }}</span></td>
+          <td class="text-right" style=""><span>Steuer</span></td>
+          <td class="text-right" style=""><span>{{ column_total }}</span></td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for product in order.product %}
+        {% set count = 0 %}
+        <tr valign="top">
+          <td>{{ count }}</td>
+          <td>{{ product.model }}</td>
+          <td>
+             <p class="name_product" style="margin: 0;">{{ product.name_1 }}<span> {{ product.name_2 }}</span></p>
+           </td>
+          <td class="text-right">{{ product.price }}</td>
+          <td class="text-right">{{ product.quantity }}</td>
+          <td class="text-right">{{ product.tax }}</td>
+          <td class="text-right">{{ product.total }}</td>
+        </tr>
+        {% set count = count + 1 %}  
+        {% endfor %}
+        {% for voucher in order.voucher %}
+        <tr>
+          <td>{{ voucher.description }}</td>
+          <td></td>
+          <td class="text-right">1</td>
+          <td class="text-right">{{ voucher.amount }}</td>
+          <td class="text-right">{{ voucher.amount }}</td>
+        </tr>
+        {% endfor %}
+        <tr><td style="border-bottom:solid 1px #000;" colspan="7">&nbsp;</td></tr>
+        {% for total in order.total %}
+        <tr>
+          <td class="text-right" colspan="6"><span>{{ total.title }}</span></td>
+          <td class="text-right">{{ total.text }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br />
+    {% if order.comment %}
+    <table border="0">
+      <thead>
+        <tr>
+          <td><span>{{ text_comment }}</span></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ order.comment }}</td>
+        </tr>
+      </tbody>
+    </table>
+    {% endif %}
+    <table style="width:100%; position: absolute; bottom: 100px; border-top: 1px solid #000; padding-top: 10px;font-size: 6px;">
+      <tr>
+         <td style="width: 100px">
+           Creme 21 GmbH <br>
+           Kaiser-Friedrich-Promenade 28 <br>
+           61348 Bad Homburg v. d. H.<br>
+           Deutschland 
+         </td>
+         <td style="width: 150px">
+           <table>
+             <tr>
+               <td class="table_padding">Telefon:</td>
+               <td>06172 / 764 21 -0</td>
+             </tr>
+             <tr>
+               <td class="table_padding">Fax:</td>
+               <td>06172 / 764 21 -29 </td>
+             </tr>
+             <tr>
+               <td class="table_padding">E-Mail:</td>
+               <td>shop@creme21.com</td>
+             </tr>
+             <tr>
+               <td class="table_padding">Web:</td>
+               <td>www.creme21.com</td>
+             </tr>
+           </table>
+         </td>
+         <td>
+           <table>
+             <tr>
+               <td class="table_padding_1">Kreditinstitut:</td>
+               <td>Taunus Sparkasse</td>
+             </tr>
+             <tr>
+               <td class="table_padding_1">SWIFT:</td>
+               <td>HELADEF1TSK</td>
+             </tr>
+             <tr>
+               <td class="table_padding_1">IBAN:</td>
+               <td>DE 41 5125 0000 0001 1391 50/td>
+             </tr>
+           </table>
+         </td>
+         <td>
+            <table>
+             <tr>
+               <td class="table_padding_1">USt-IdNr.:</td>
+               <td>DE323512931</td>
+             </tr>
+             <tr>
+               <td class="table_padding_1">HRB Nummer:</td>
+               <td>14511</td>
+             </tr>
+             <tr>
+               <td class="table_padding_1">Geschäftsführer:</td>
+               <td>Amitabh Goenka, Yogesh Goenka, Chirag Sheth</td>
+             </tr>
+             <tr>
+               <td class="table_padding">Sitz:</td>
+               <td>Bad Homburg v. d. H.</td>
+             </tr>
+             <tr>
+               <td class="table_padding">Amtsgericht:</td>
+               <td>Amtsgericht Bad Homburg</td>
+             </tr>
+           </table>
+         </td>
+      </tr>
+    </table>
+  </div>
+  {% endfor %}
+</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+
+.saferpaycw-confirmation-form .saferpaycw-error {
+	margin-left: 230px;
+	color: #D8000C;
+}
+
+.saferpaycw-iframe {
+	width: 100%;
+	border: none;
+}
+
+.saferpaycw-widget {
+	width: 100%;
+	border: none;
+}
+
+
+
+.saferpaycw-confirmation-form .card-brand-image-box {
+	display: inline-block;
+}
+
+
+.saferpaycw-confirmation-form .card-brand-image-color.brand-is-deselected {
+	display:none;
+}
+
+.saferpaycw-confirmation-form .card-brand-image-grey.brand-is-selected {
+	display:none;
+}
+
+.saferpaycw-confirmation-form .card-brand-image-selection img {
+	width:auto;
+	height: 25px;
+	margin-right: 5px;
+}
+
+.saferpaycw-confirmation-form .invalid-card-number, .saferpaycw-confirmation-form .invalid-cvc-number {
+	border-color: #fb7f88;
+	background-image: url(../image/invalid.png);
+	background-position: 95% center;
+	background-repeat: no-repeat;
+}
+
+.saferpaycw-confirmation-form .valid-card-number, .saferpaycw-confirmation-form .valid-cvc-number {
+	background-image: url(../image/valid.png);
+	background-position: 95% center;
+	background-repeat: no-repeat;
+}
+
+.saferpaycw-confirmation-form .saferpaycw-card-cvc input[type='text']{
+	width: 60px;
+}
+.saferpaycw-confirmation-form .saferpaycw-expiration-date select {
+	margin-right: 5px;
+}
+.saferpaycw-confirmation-form .card-brand-image-selection {
+	margin-top: 3px;
+}
+
+.saferpaycw-alias-pane {
+	margin-bottom: 20px;
+}
+
+.saferpaycw-alias-manager-form .col-sm-8{
+	padding-left: 0;
+}
+
+#saferpaycw-checkout-form-pane .col-sm-4, #saferpaycw-checkout-form-pane .col-sm-8{
+	padding-left: 0;
+}
+
+

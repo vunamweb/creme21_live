@@ -1,0 +1,39 @@
+<h2>{{ SaferpayCw_Translate('Transactions') }}</h2>
+<table class="form">
+	<tr>
+		<th>{{ SaferpayCw_Translate('#') }}</th>
+		<th>{{ SaferpayCw_Translate('Amount') }}</th>
+		<th>{{ SaferpayCw_Translate('Created On') }}</th>
+		<th>{{ SaferpayCw_Translate('Is Authorized') }}</th>
+		<th>{{ $transaction->getTransactionObject()('Payment Method') }}</th>
+	</tr>
+
+	{%  for transaction in transactions %}
+	  {% if transaction.getTransactionObject() is not null%}
+		<tr>
+			<td>{{ transaction.getTransactionExternalId() }}</td>
+			<td>{{ transaction.getTransactionObject().getAuthorizationAmount() }}</td>
+			<td>{{ transaction.getCreatedOn().format(Customweb_Core_Util_System::getDefaultDateTimeFormat()) }}</td>
+			<td>{% if transaction.getTransactionObject().isAuthorized() %}
+					{{ SaferpayCw_Translate('Yes') }}
+				{%  else %}
+					{{  SaferpayCw_Translate('No') }}
+				{%  endif %}
+			</td>
+			<td>{{ transaction.getTransactionObject().getPaymentMethod().getPaymentMethodDisplayName() }}</td>
+		</tr>
+	    {%  else %}
+		<tr>
+			<td>{{ transaction.getTransactionExternalId() }}</td>
+			<td>--</td>
+			<td>{{ transaction.getCreatedOn().format(Customweb_Core_Util_System::getDefaultDateTimeFormat()) }}</td>
+			<td>{{  SaferpayCw_Translate('No') }}</td>
+			<td>--</td>
+		</tr>
+		{% endif %}
+	{% endfor %}
+
+</table>
+<br />
+
+

@@ -1,0 +1,209 @@
+{{ header }}
+ <main>
+ <div class="container-xl">
+ <!-- The slide -->
+         <div id="myCarousel" class="carousel slide" data-interval="false" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                        {% set count = 0 %}
+						{% for item in header_images %}
+						   {% if count == 0 %}
+						      <li data-target="#myCarousel" data-slide-to="{{ count }}" class="active"></li>
+							{% else %} 
+							<li data-target="#myCarousel" data-slide-to="{{ count }}"></li>
+						   {% endif %}
+						   {% set count = count + 1 %}  
+						{% endfor %}
+				</ol>
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                        {% set count = 0 %}
+						{% for item in header_images %}
+						   {% if count == 0 %}
+						      <div class="carousel-item active">
+                                <img src="../images/userfiles/image/{{ item['imgname'] }}" alt="Los Angeles">
+                              </div>
+							{% else %} 
+							<div class="carousel-item">
+                                <img src="../images/userfiles/image/{{ item['imgname'] }}" alt="Los Angeles">
+                            </div> 
+						   {% endif %}
+						   {% set count = count + 1 %}  
+						{% endfor %}
+                </div>
+        </div>
+               <!-- End slideshow -->
+ <!-- End The slide -->
+
+
+<div id="product-category" class="container layer-category">
+  <div class="layered-navigation-block"></div>
+  <div class="ajax-loader">
+        <img src="image/catalog/AjaxLoader.gif" alt="" />
+    </div>
+  <div class="row relative">
+    <!-- TOP !-->
+    <div class="hide col-md-2 col-sm-6 hidden-xs text-right">
+          <div class="btn-group btn-group-sm">
+            <button type="button" id="grid-view" class="btn" data-toggle="tooltip" title="{{ button_grid }}"></button>
+            <button type="button" id="list-view" class="btn" data-toggle="tooltip" title="{{ button_list }}"></button>
+          </div>
+        </div>
+        
+        <div class="sort_search_category">
+        <div class="search_text">
+          <input type="text" placeholder="suche">
+        </div>
+        <div class="search_category navbar_category">
+          <div class="select-wrapper">
+              <select>
+                <option value="0">{{ category_text }}</option>
+                {% for category in categories %}
+                  <option value={{ category['id'] }}>{{ category['name_1'] }}</option>
+                {% endfor %}
+              </select>
+          </div>
+        </div>
+        <div class="search_product_type navbar_category">
+          <select>
+             <option value="-1">Produktkttyp</option>
+             <option value="0">product type 1</option>
+             <option value="1">product type 2</option>
+             <option value="2">product type 3</option>
+          </select>
+        </div>
+        <div class="search_product_attribute navbar_category">
+          <select>
+             <option value="0">Eigenschaften</option>
+             {% for item in product_attribute %}
+               <option value={{ item['attribute_id'] }}>{{ item['name'] }}</option>
+             {% endfor %}
+          </select>
+        </div>
+        <div class="sort_category">
+          <div class="form-group input-group input-group-sm">
+            <label class="input-group-addon" for="input-sort">{{ text_sort }}</label>
+            <select id="input-sort" class="form-control" onchange="location = this.value;">
+              
+              
+              
+              {% for sorts in sorts %}
+              {% if sorts.value == '%s-%s'|format(sort, order) %}
+              
+              
+              
+              <option value="{{ sorts.href }}" selected="selected">{{ sorts.text }}</option>
+              
+              
+              
+              {% else %}
+              
+              
+              
+              <option value="{{ sorts.href }}">{{ sorts.text }}</option>
+              
+              
+              
+              {% endif %}
+              {% endfor %}
+            
+            
+            
+            </select>
+          </div>
+        </div>
+       </div> 
+      <!-- END TOP !-->
+      <hr class="mt_0" />
+    {% if thumb or description %}
+      <div class="row"> {% if thumb %}
+        <div class="col-sm-2"><img src="{{ thumb }}" alt="{{ heading_title }}" title="{{ heading_title }}" class="img-thumbnail hide" /></div>
+        {% endif %}
+        {% if description %}
+        <div class="col-sm-10 hide">{{ description }}</div>
+        {% endif %}</div>
+      {% endif %}
+    {{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">{{ content_top }}
+      <h2 class="hide">{{ heading_title }}</h2>
+      {% if categories %}
+      <h3 style="display: none;">{{ text_refine }}</h3>
+      {% if categories|length <= 5 %}
+      {{ description }}
+      <div style="display: none;" class="row">
+        <div class="col-sm-3">
+          <ul>
+            {% for category in categories %}
+            <li><a href="{{ category.href }}">{{ category.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% else %}
+      <div style="display: none;" class="row">{% for category in categories|batch((categories|length / 4)|round(1, 'ceil')) %}
+        <div class="col-sm-3">
+          <ul>
+            {% for child in category %}
+            <li><a href="{{ child.href }}">{{ child.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endfor %}</div>
+      <br />
+      {% endif %}
+      {% endif %}
+      {% if products %}
+      <div class="row custom-category relative"> 
+       <div class="loading"><img src="images/YlWC.gif"/></div>
+       {% for item in products %}
+        {% for product in item %}
+          {% if product.name_1  %}
+        <div class="product-layout product-list col-xs-12" category="{{ product.category_id }} category" product_type="{{ product.product_type }} product_type" product_attribute="{{ product.product_attribute }} product_attribute">
+          <div class="product-thumb {{ product.class }}">
+            <div class="item">
+                <div class="item-inner">
+                    <div class="col-des">
+                      <a href="{{ product.href }}">
+                      <div class="caption">
+                            <h4><p class="name_product">{{ product.name_1 }}<span>{{ product.name_2 }}</span></p></h4>
+                            <div class="product-des">{{ product.description }}</div>
+                       </div>
+                       </a>
+                       <div class="image images-container text-center">
+                          <a href="{{ product.href }}"  class="product-image">
+                           <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" />
+                          </a>
+                       </div>
+                       <div class="action-links">
+                              <button class="button btn-wishlist" type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"></button>
+                              <button class="button btn-cart" type="button" data-toggle="tooltip"  title="{{ button_cart }}" onclick="cart.add('{{ product.product_id }}', '{{ product.minimum }}')"></button>
+                       </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        {% else %}
+        <div class="col-md-12"><div class="bg-top-category category {{ product['category_id'] }}">{{ product['name'] }}</div></div>
+        {% endif %}
+        {% endfor %}{% endfor %} </div>
+      {% endif %}
+      {% if not categories and not products %}
+      <p>{{ text_empty }}</p>
+      <div class="buttons">
+        <div class="pull-right"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a></div>
+      </div>
+      {% endif %}
+      {{ content_bottom }}</div>
+    {{ column_right }}</div>
+</div>
+</div>
+</main>
+{{ footer }} 

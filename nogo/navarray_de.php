@@ -1,0 +1,5 @@
+<?php
+$navarray = array("0"=>"", "1"=>"home_block2", "11"=>"mund-nasen-masken_block3", "12"=>"home_block4", "13"=>"home_block5", "14"=>"footer_social", "15"=>"footer_col1", "16"=>"footer_col_last", "24"=>"pruefergebnisse", "18"=>"groessentabelle", "19"=>"shop-start-einleitung", "20"=>"shop_content", "21"=>"groessentabelle", "22"=>"muttertag", "23"=>"factory-outlet");
+?><?php
+$navarrayFULL = array("0"=>"", "1"=>"Start | 3 Boxen / 1. Reihe", "11"=>"Start | Mund-Nase Masken in den aktuellen Modefarben", "12"=>"Druck - Signatur - Neue Modelle", "13"=>"Start | UNTERNEHMEN", "14"=>"Newsletter Anmeldung Social Icons", "15"=>"Start | Footer Spalte 4", "16"=>"OFF ---- Footer Spalte 4", "24"=>"Unterseite Prüfergebnisse", "18"=>"Unterseite Größentabelle", "19"=>"Unterseite Bedienungsanleitung", "20"=>"Shop Start Einleitung Bedienungsanleitung", "21"=>"Größentabelle", "22"=>"off-Muttertag", "23"=>"Factory Outlet");
+?>
