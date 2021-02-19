@@ -100,11 +100,14 @@ class ControllerCommonCart extends Controller {
 				$c_words = 30;
 				$product['name'] = strlen($product['name']) > $c_words ? substr($product['name'],0,$c_words)."..." : $product['name'];
 			
-			$data['products'][] = array(
+				$name =  $product['name'];
+				$name = explode("#", $name);
+				
+				$data['products'][] = array(
 				'cart_id'   => $product['cart_id'],
 				'product_id'   => $product['product_id'],
 				'thumb'     => $image,
-				'name'      => $product['name'],
+				'name'      => $name[0], //$product['name'],
 				'model'     => $product['model'],
 				'option'    => $option_data,
 				'recurring' => ($product['recurring'] ? $product['recurring']['name'] : ''),
