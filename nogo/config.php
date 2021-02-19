@@ -11,7 +11,7 @@ $morpheus["password"]		= "";
 $morpheus["server"]			= "localhost";
 
 //$morpheus["imageurl"]		= "https://mytexmask.ch/cms/";
-$morpheus["url"]			= "http://localhost/creme21/";
+$morpheus["url"]			= "http://localhost/shop/creme21_live/";
 $morpheus["search_ID"]		= array("de"=>24, "en"=>200, );
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

@@ -6,7 +6,7 @@ define('HTTP_SERVER', 'https://pixeldusche.com/creme21/shop/');
 define('HTTPS_SERVER', 'https://pixeldusche.com/creme21/shop/');
 
 // DIR
-define('DIR_APPLICATION', '/www/htdocs/w0118b8d/pixeldusche.com/creme21/shop/catalog/');
+define('DIR_APPLICATION', '/Applications/XAMPP/xamppfiles/htdocs/shop/creme21_live/shop/catalog/');
 define('DIR_SYSTEM', '/www/htdocs/w0118b8d/pixeldusche.com/creme21/shop/system/');
 define('DIR_IMAGE', '/www/htdocs/w0118b8d/pixeldusche.com/creme21/shop/image/');
 define('DIR_STORAGE', '/www/htdocs/w0118b8d/pixeldusche.com/creme21/shop/storage/');

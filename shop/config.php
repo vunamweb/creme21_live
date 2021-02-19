@@ -1,14 +1,14 @@
 <?php
 // HTTP
-define('HTTP_SERVER', 'http://localhost/creme21/shop/');
+define('HTTP_SERVER', 'http://localhost/shop/creme21_live/shop/');
 
 // HTTPS
-define('HTTPS_SERVER', 'http://localhost/creme21/shop/');
+define('HTTPS_SERVER', 'http://localhost/shop/creme21_live/shop/');
 
 // DIR
-define('DIR_APPLICATION', 'C:/xampp_7/htdocs/creme21/shop/catalog/');
-define('DIR_SYSTEM', 'C:/xampp_7/htdocs/creme21/shop/system/');
-define('DIR_IMAGE', 'C:/xampp_7/htdocs/creme21/shop/image/');
+define('DIR_APPLICATION', '/Applications/XAMPP/xamppfiles/htdocs/shop/creme21_live/shop/catalog/');
+define('DIR_SYSTEM', '/Applications/XAMPP/xamppfiles/htdocs/shop/creme21_live/shop/system/');
+define('DIR_IMAGE', '/Applications/XAMPP/xamppfiles/htdocs/shop/creme21_live/shop/image/');
 define('DIR_STORAGE', DIR_SYSTEM . 'storage/');
 define('DIR_LANGUAGE', DIR_APPLICATION . 'language/');
 define('DIR_TEMPLATE', DIR_APPLICATION . 'view/theme/');
