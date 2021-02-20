@@ -3,7 +3,8 @@ class ControllerCatalogProduct extends Controller {
 	private $error = array();
 
 	public function index() {
-        /* Product Rotator */
+		//echo 'd'; die();
+		/* Product Rotator */
         $this->load->model('catalog/ocproductrotator');
         
         $this->model_catalog_ocproductrotator->installProductRotator();

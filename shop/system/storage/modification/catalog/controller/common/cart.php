@@ -107,7 +107,7 @@ class ControllerCommonCart extends Controller {
 				'cart_id'   => $product['cart_id'],
 				'product_id'   => $product['product_id'],
 				'thumb'     => $image,
-				'name'      => $name[0], //$product['name'],
+				'name'      => $name[0] . ' ' . $name[1], //$product['name'],
 				'model'     => $product['model'],
 				'option'    => $option_data,
 				'recurring' => ($product['recurring'] ? $product['recurring']['name'] : ''),
