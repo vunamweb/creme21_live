@@ -566,11 +566,12 @@ class ControllerProductCategory extends Controller
 			if ($module_status) {
 				$data['module_oclayerednavigation_loader_img'] = $base_url . 'image/' . $this->config->get('module_oclayerednavigation_loader_img');
 				if ($category_info['column'] == '') {
-					//echo "dd"; die();
+					//echo "a"; die();
 				   $this->response->setOutput($this->load->view('extension/module/oclayerednavigation/occategory', $data));
 					
 				}
 				else {
+					echo "b"; die();
 					$this->response->redirect('../'.$category_info["column"].'');
 					//$data['description'] = file_get_contents('include/' . $category_info['column'] . '.php'); //html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
 					//$this->response->setOutput($this->load->view('product/category', $data));
