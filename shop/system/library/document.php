@@ -69,14 +69,15 @@ class Document {
         $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "tax_rate");
 
         $taxObj = $query->row;
-        //print_r($tax);
+        //print_r($taxObj); die();
         $tax = (int) $taxObj['rate'];
         $tax = 1 + $tax/100;
         
         $taxName = $taxObj['name'];
+        //print_r($totals);
 
           if (count($totals) == 2) {
-               //echo count($totals);
+               //print_r($totals);
                $totals[2] = $totals[1];
                $value1 = $totals[0]['value'];
                $value_ = ($value1) - ($value1) / $tax;
@@ -101,15 +102,19 @@ class Document {
                     }*/
                }
                //end set shipping
-               //print_r($totals);die();
-
-               $totals[3] = $totals[2];
-               $value1 = $totals[0]['value'];
-               $value2 = $totals[1]['value'];
-               $value_ = ($value1 + $value2) - ($value1 + $value2) / $tax;
-               $totals[2]['title'] = $taxName;
-               $totals[2]['value'] = $value_;
-
+               //print_r($totals);
+               if($totals[1]['code'] == 'coupon') {
+                  $totals[0]['value'] = $totals[2]['value'];
+                  $totals[1]['value'] = ($totals[0]['value']) - ($totals[0]['value']) / $tax;
+               }else {
+                    $totals[3] = $totals[2];
+                    $value1 = $totals[0]['value'];
+                    $value2 = $totals[1]['value'];
+                    $value_ = ($value1 + $value2) - ($value1 + $value2) / $tax;
+                    $totals[2]['title'] = $taxName;
+                    $totals[2]['value'] = $value_;
+               }
+                
                //print_r($totals);
           } else {
                $totals[4] = $totals[3];
