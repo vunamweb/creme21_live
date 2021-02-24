@@ -362,7 +362,7 @@ class ControllerCheckoutCart extends Controller
 
     public function add()
     {
-        //echo "dd"; die();
+        //echo "ddzz"; die();
         $this->load->language('checkout/cart');
 
         $json = array();
@@ -516,7 +516,18 @@ class ControllerCheckoutCart extends Controller
             }
         }
 
-        //setcookie("cart", $this->load->controller('common/cart'), time()+3600, "/");
+        //$_SESSION['cart_'] = $this->load->controller('common/cart');
+        if($_COOKIE['cart'] == '' || $_COOKIE['cart'] == null) {
+            //echo "no set";
+            setcookie("cart", $this->load->controller('common/cart'), time()+3600, "/");
+            //setcookie("cart", $this->load->controller('common/cart'), time()+3600, "/");
+            
+        } else {
+            //echo "set";
+            setcookie("cart", $this->load->controller('common/cart'), time()+3600, "/");
+            //$_COOKIE["cart"] = $this->load->controller('common/cart');
+        }
+        //print_r($_COOKIE) ; die();
 
         $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput(json_encode($json));
@@ -627,7 +638,7 @@ class ControllerCheckoutCart extends Controller
                 data['currency']));
         }
 
-        //setcookie("cart", $this->load->controller('common/cart'), time()+3600, "/"); 
+        setcookie("cart", $this->load->controller('common/cart'), time()+3600, "/"); 
 
         $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput(json_encode($json));

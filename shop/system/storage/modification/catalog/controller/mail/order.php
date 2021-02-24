@@ -463,8 +463,12 @@ class ControllerMailOrder extends Controller {
 					);					
 				}
 					
+				$name = $order_product['name'];
+				$name = explode("#", $name);
+
+
 				$data['products'][] = array(
-					'name'     => $order_product['name'],
+					'name'     => $name[0] . ' ' . $name[1], //$order_product['name'],
 					'model'    => $order_product['model'],
 					'quantity' => $order_product['quantity'],
 					'option'   => $option_data,
@@ -504,11 +508,13 @@ class ControllerMailOrder extends Controller {
 			$mail->smtp_port = $this->config->get('config_mail_smtp_port');
 			$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
 
-			$mail->setTo($this->config->get('config_email'));
+			//$mail->setTo($this->config->get('config_email'));
+			$mail->setTo("creme21-versand@freiheit-gruppe.de");
 			$mail->setFrom($this->config->get('config_email'));
 			$mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
 			$mail->setSubject(html_entity_decode(sprintf($this->language->get('text_subject'), $this->config->get('config_name'), $order_info['order_id']), ENT_QUOTES, 'UTF-8'));
-			$mail->setText($this->load->view('mail/order_alert', $data));
+			$mail->setHtml($this->load->view('mail/order_alert', $data));
+			//$mail->isHTML(true); 
 			$mail->send();
 
 			// Send to additional alert emails
