@@ -2,7 +2,7 @@
 // Text
 $_['text_refine']       = 'Suche eingrenzen';
 $_['text_product']      = 'Produkte';
-$_['text_category']      = 'Kategorien';
+$_['text_category']      = 'Produktgruppe';
 $_['text_error']        = 'Kategorie nicht gefunden';
 $_['text_empty']        = 'Keine Produkte in dieser Kategorie vorhanden';
 $_['text_quantity']     = 'Menge';
