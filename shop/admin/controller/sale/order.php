@@ -1740,7 +1740,7 @@ class ControllerSaleOrder extends Controller {
                             "Content-Disposition: attachment;\n" . " filename=\"".basename($filename)."\"; size=".filesize($files).";\n" .
                             "Content-Transfer-Encoding: base64\n\n" . $data_ . "\n\n";
                             
-                    $subject = html_entity_decode(sprintf($language->get('text_subject'), $order_info['store_name'], $order_info['order_id']), ENT_QUOTES, 'UTF-8');
+                    $subject = "Order"; //html_entity_decode(sprintf($language->get('text_subject'), $order_info['store_name'], $order_info['order_id']), ENT_QUOTES, 'UTF-8');
                     $subject = $subject . ' ' . $order_info['order_id'];
                     //print_r($order_info); die();
                     if($order_info['order_status_id'] == 3 || $order_info['order_status_id'] == 24) {
