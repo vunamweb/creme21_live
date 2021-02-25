@@ -152,9 +152,9 @@ class ControllerProductCategory extends Controller
 
 			//echo $category_id; die();
 			$results = $this->model_catalog_category->getCategories($category_id);
-			if(count($result) == 0)
+			//echo count($results);
+			if(count($results) == 0)
 			  $results[0] = $this->model_catalog_category->getCategory($category_id);
-			//echo count($result); die();
 			//print_r($results[0]); die();
 
 
