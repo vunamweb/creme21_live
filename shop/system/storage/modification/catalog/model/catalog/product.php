@@ -243,9 +243,9 @@ class ModelCatalogProduct extends Model {
 		$rows = $query->rows;
 
 		if($rows == null) {
-			$rows[0]['imgname'] = 'Header_MutterKind_679.jpg';
+			/*$rows[0]['imgname'] = 'Header_MutterKind_679.jpg';
 			$rows[1]['imgname'] = 'slider_2.jpg';
-			$rows[2]['imgname'] = 'slider_3.jpg';
+			$rows[2]['imgname'] = 'slider_3.jpg';*/
 		} 
 
 		return $rows;

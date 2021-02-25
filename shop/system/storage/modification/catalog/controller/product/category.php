@@ -150,8 +150,12 @@ class ControllerProductCategory extends Controller
 
 			$data['categories'] = array();
 
+			//echo $category_id; die();
 			$results = $this->model_catalog_category->getCategories($category_id);
-			//print_r($results); die();
+			if(count($result) == 0)
+			  $results[0] = $this->model_catalog_category->getCategory($category_id);
+			//echo count($result); die();
+			//print_r($results[0]); die();
 
 
 			/* Get new product */
@@ -571,7 +575,7 @@ class ControllerProductCategory extends Controller
 					
 				}
 				else {
-					echo "b"; die();
+					//echo "b"; die();
 					$this->response->redirect('../'.$category_info["column"].'');
 					//$data['description'] = file_get_contents('include/' . $category_info['column'] . '.php'); //html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
 					//$this->response->setOutput($this->load->view('product/category', $data));
