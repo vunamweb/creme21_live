@@ -1079,11 +1079,11 @@ ul.language button {
 
 /* geozone */
 #input-payment-zone {
-	display: none;
+	/*display: none;*/
 }
 label[for="input-payment-zone"]
 {
-    display:none;
+    /*display:none;*/
 }
 /* end geozone */
 
