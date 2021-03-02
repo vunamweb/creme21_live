@@ -164,11 +164,13 @@ class ControllerApiShipping extends Controller {
 
 				$results = $this->model_setting_extension->getExtensions('shipping');
 
+				$total = 0;
+
 				foreach ($results as $result) {
 					if ($this->config->get('shipping_' . $result['code'] . '_status')) {
 						$this->load->model('extension/shipping/' . $result['code']);
 
-						$quote = $this->{'model_extension_shipping_' . $result['code']}->getQuote($this->session->data['shipping_address']);
+						$quote = $this->{'model_extension_shipping_' . $result['code']}->getQuote($this->session->data['shipping_address'], $total, $this->session->data['shipping_address']['country_id']);
 
 						if ($quote) {
 							$json['shipping_methods'][$result['code']] = array(
