@@ -60,6 +60,10 @@ $_['text_commission_removed']    = 'Provision gelöscht';
 $_['text_restock']               = 'Produkt(e) erfolgreich in Lager transferiert';
 $_['text_upload']                = 'Datei erfolgreich hochgeladen';
 $_['text_picklist']              = 'Lieferschein';
+$_['text_subject_change_status_order']              = 'Creme 21 - Information zu Ihrer Bestellung ';
+$_['text_reply']              = 'Sollten noch Fragen offen sein, bitte auf dieses Email antworten.';
+
+
 
 // Column
 $_['column_order_id']            = 'Auftragsnummer';

@@ -1502,6 +1502,16 @@ class ControllerSaleOrder extends Controller {
 
 		$orders = array();
 
+		if (isset($this->request->get['page'])) {
+			$page = $this->request->get['page'];
+		} else {
+			$page = 1;
+		}
+
+		$results = $this->model_sale_order->getOrderHistories($this->request->get['order_id'], ($page - 1) * 10, 100);
+		//print_r($results);
+		$comment_ = nl2br($results[0]['comment']);
+
 		if (isset($this->request->post['selected'])) {
 			$orders = $this->request->post['selected'];
 		} elseif (isset($this->request->get['order_id'])) {
@@ -1725,7 +1735,12 @@ class ControllerSaleOrder extends Controller {
                     $data_history['text_date_added'] = $language->get('text_date_added');
                     $data_history['date_added'] = date($language->get('date_format_short'), strtotime($order_info['date_added']));
                     $data_history['date_added'] = str_replace('/', '.', $data_history['date_added']);
-                    $data_history['text_order_id'] = $language->get('text_order_id');
+					$data_history['text_order_id'] = $language->get('text_order_id');
+					$data_history['text_reply'] = $this->language->get('text_reply');
+					$data_history['text_title_comment'] = $this->language->get('column_comment');
+					$data_history['text_comment'] = $comment_;
+
+					//print_r($order_info);
                     
                     $email_body = $this->load->view('mail/history', $data_history);
                     //echo $email_body; die();
@@ -1740,8 +1755,8 @@ class ControllerSaleOrder extends Controller {
                             "Content-Disposition: attachment;\n" . " filename=\"".basename($filename)."\"; size=".filesize($files).";\n" .
 							"Content-Transfer-Encoding: base64\n\n" . $data_ . "\n\n";*/
 							
-							$subject = "Order"; //html_entity_decode(sprintf($language->get('text_subject'), $order_info['store_name'], $order_info['order_id']), ENT_QUOTES, 'UTF-8');
-					        $subject = $subject . ' ' . $order_info['order_id'];
+							$subject = $this->language->get('text_subject_change_status_order'); //html_entity_decode(sprintf($language->get('text_subject'), $order_info['store_name'], $order_info['order_id']), ENT_QUOTES, 'UTF-8');
+					        $subject = $subject . '' . $order_info['order_id'];
 					
 							$mail = new Mail($this->config->get('config_mail_engine'));
 							$mail->parameter = $this->config->get('config_mail_parameter');

@@ -60,6 +60,8 @@ $_['text_commission_removed']    = 'Success: Commission removed!';
 $_['text_restock']               = 'Success: Products have been restocked!';
 $_['text_upload']                = 'Your file was successfully uploaded!';
 $_['text_picklist']              = 'Dispatch Note';
+$_['text_subject_change_status_order']              = 'Creme 21 - Information to order no. ';
+$_['text_reply']              = 'If you have any questions, please answer this email';
 
 // Column
 $_['column_order_id']            = 'Order ID';

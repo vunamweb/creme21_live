@@ -1,6 +1,9 @@
 <?php
 class ControllerErrorNotFound extends Controller {
 	public function index() {
+		if($_SERVER['REQUEST_URI'] == '/shop/kundenlogin' || $_SERVER['REQUEST_URI'] == '/shop/customerlogin')
+		  $this->response->redirect('../shop/index.php?route=account/login');
+		//echo $_SERVER['REQUEST_URI']; die();
 		$this->load->language('error/not_found');
 
 		$this->document->setTitle($this->language->get('heading_title'));
