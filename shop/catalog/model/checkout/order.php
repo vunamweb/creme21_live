@@ -165,6 +165,11 @@ class ModelCheckoutOrder extends Model {
 				$language_code = $this->config->get('config_language');
 			}
 
+			if($order_query->row['total'] >= 30)
+			  $total_new = $order_query->row['total'] - 4.95;
+			else 
+			  $total_new = $order_query->row['total'];
+
 			return array(
 				'order_id'                => $order_query->row['order_id'],
 				'invoice_no'              => $order_query->row['invoice_no'],
@@ -215,7 +220,7 @@ class ModelCheckoutOrder extends Model {
 				'shipping_method'         => $order_query->row['shipping_method'],
 				'shipping_code'           => $order_query->row['shipping_code'],
 				'comment'                 => $order_query->row['comment'],
-				'total'                   => $order_query->row['total'],
+				'total'                   => $total_new, //$order_query->row['total'],
 				'order_status_id'         => $order_query->row['order_status_id'],
 				'order_status'            => $order_query->row['order_status'],
 				'affiliate_id'            => $order_query->row['affiliate_id'],
