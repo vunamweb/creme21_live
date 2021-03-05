@@ -1730,7 +1730,7 @@ class ControllerSaleOrder extends Controller {
                     $email_body = $this->load->view('mail/history', $data_history);
                     //echo $email_body; die();
                     
-                    $mime_boundary = "==Multipart_Boundary_x{$semi_rand}x";
+                    /*$mime_boundary = "==Multipart_Boundary_x{$semi_rand}x";
                     $headers = "From: " . $this->config->get('config_mail_engine');
                     $headers .= "\nMIME-Version: 1.0\n" . "Content-Type: multipart/mixed;\n" . " boundary=\"{$mime_boundary}\"";
                     $message = "This is a multi-part message in MIME format.\n\n" . "--{$mime_boundary}\n" . "Content-Type: text/html; charset=\"UTF-8\"\n" . "Content-Transfer-Encoding: 7bit\n\n" . $email_body . "\n\n";
@@ -1738,16 +1738,34 @@ class ControllerSaleOrder extends Controller {
                     $message1 = "Content-Type: application/octet-stream; name=\"".basename($filename)."\"\n" .
                             "Content-Description: ".basename($filename)."\n" .
                             "Content-Disposition: attachment;\n" . " filename=\"".basename($filename)."\"; size=".filesize($files).";\n" .
-                            "Content-Transfer-Encoding: base64\n\n" . $data_ . "\n\n";
+							"Content-Transfer-Encoding: base64\n\n" . $data_ . "\n\n";*/
+							
+							$subject = "Order"; //html_entity_decode(sprintf($language->get('text_subject'), $order_info['store_name'], $order_info['order_id']), ENT_QUOTES, 'UTF-8');
+					        $subject = $subject . ' ' . $order_info['order_id'];
+					
+							$mail = new Mail($this->config->get('config_mail_engine'));
+							$mail->parameter = $this->config->get('config_mail_parameter');
+							$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
+							$mail->smtp_username = $this->config->get('config_mail_smtp_username');
+							$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+							$mail->smtp_port = $this->config->get('config_mail_smtp_port');
+							$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+							
+							$mail->setTo($order_info['email']);
+							//$mail->setFrom($this->config->get('config_email'));
+							$mail->setFrom($this->config->get('config_email'));
+							$mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
+							$mail->setSubject($subject);
+							$mail->setHtml($email_body);
+							$mail->send();
                             
-                    $subject = "Order"; //html_entity_decode(sprintf($language->get('text_subject'), $order_info['store_name'], $order_info['order_id']), ENT_QUOTES, 'UTF-8');
-                    $subject = $subject . ' ' . $order_info['order_id'];
+                    
                     //print_r($order_info); die();
-                    if($order_info['order_status_id'] == 3 || $order_info['order_status_id'] == 24) {
+                    /*if($order_info['order_status_id'] == 3 || $order_info['order_status_id'] == 24) {
                         $message .= $message1;
                         mail($order_info['email'], $subject, $message, $headers);
                     } else
-                      mail($order_info['email'], $subject, $message, $headers);
+                      mail($order_info['email'], $subject, $message, $headers);*/
                 } 
          }
     

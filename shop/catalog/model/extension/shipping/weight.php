@@ -41,7 +41,7 @@ class ModelExtensionShippingWeight extends Model {
 				//set title for shipping if freeshipping
 				$title = null;
 
-				if ($country_id == 258) {
+				if ($country_id == 81) {
 					if ($total >= MIN_SHIP_GERMANY) {
 						//$title = "versdan";
 						$text = $this->currency->format($this->tax->calculate(0, $this->config->get('shipping_weight_tax_class_id'), $this->config->get('config_tax')), $this->session->data['currency']);

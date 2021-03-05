@@ -636,10 +636,10 @@ class ControllerProductCategory extends Controller
 	public function optimize(&$dataProducts)
 	{
 		for ($i = 0; $i < count($dataProducts); $i++)
-			if (count($dataProducts[$i]) == 6) {
+			if (count($dataProducts[$i]) == 6 && $i==1) {
 				$dataProducts[$i][6] = $dataProducts[$i][5];
 				$dataProducts[$i][6]['thumb'] = 'image/catalog/Creme_Smiley.png';
-				$dataProducts[$i][6]['class'] = 'rest';
+				$dataProducts[$i][6]['class'] = ' rest';
 			}
 	}
 }

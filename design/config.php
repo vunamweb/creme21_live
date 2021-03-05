@@ -1,57 +1,32 @@
 <?php
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# www.pixel-dusche.de / björn t. knetter / post@pixel-dusche.de / frankfurt am main, germany
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-global $morpheus;
-$morpheus = array();
+// HTTP
+define('HTTP_SERVER', 'https://creme21.web-previews.de/shop/');
 
-$morpheus["dbname"] 		= "d02f418a";
-$morpheus["user"]			= "d02f418a";
-$morpheus["password"]		= "evNpSRJ6eqaFb3mK";
-$morpheus["server"]			= "localhost";
+// HTTPS
+define('HTTPS_SERVER', 'https://creme21.web-previews.de/shop/');
 
-// $morpheus["imageurl"]		= "https://mytexmask.ch/cms/";
-$morpheus["url"]			= "https://pixeldusche.com/creme21/";
-$morpheus["search_ID"]		= array("de"=>24, "en"=>200, );
+// DIR
+define('DIR_APPLICATION', '/var/www/opencart/dev/pub/shop/catalog/');
+define('DIR_SYSTEM', '/var/www/opencart/dev/pub/shop/system/');
+define('DIR_IMAGE', '/var/www/opencart/dev/pub/shop/image/');
+define('DIR_STORAGE', '/var/www/opencart/dev/pub/shop/storage/');
+define('DIR_LANGUAGE', DIR_APPLICATION . 'language/');
+define('DIR_TEMPLATE', DIR_APPLICATION . 'view/theme/');
+define('DIR_CONFIG', DIR_SYSTEM . 'config/');
+define('DIR_CACHE', DIR_STORAGE . 'cache/');
+define('DIR_DOWNLOAD', DIR_STORAGE . 'download/');
+define('DIR_LOGS', DIR_STORAGE . 'logs/');
+define('DIR_MODIFICATION', DIR_STORAGE . 'modification/');
+define('DIR_SESSION', DIR_STORAGE . 'session/');
+define('DIR_UPLOAD', DIR_STORAGE . 'upload/');
+define('IMAGE_DEFAULT', 'catalog/Duschen.jpg');
+define('MIN_SHIP_GERMANY', 30);
+// define('MIN_SHIP_EURO', 40);
 
-$morpheus["db_live"]		= "morp_cms_content"; // morp_cms_content_live
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-
-$morpheus["multilang"]		= 1;
-$morpheus["dfile"]			= "morpheus_db.sql";
-$morpheus["home_ID"]		= array("de"=>1, "en"=>2 );
-$morpheus["lan_arr"]		= array(1=>"de", 20=>"en" );
-$morpheus["lan_nm_arr"]		= array("de"=>"Deutsch", "en"=>"English", );
-
-$morpheus["img_size_news"]		= 450;
-$morpheus["img_size_news_tn"]	= 120;
-$morpheus["img_size_tn"]	= 35;
-$morpheus["img_size_full"]	= 600;
-$morpheus["img_size"]		= 600;
-$morpheus["page-topic"]		= "";
-$morpheus["publisher"]		= "";
-$morpheus["foto"]			= 0;
-$morpheus["imageName"]		= "morpheus_";
-$morpheus["GaleryPath"]		= "morpheus_";
-
-$morpheus["imageFolder"] 	= 'image/';
-
-// NEW array for SEARCH PAGE
-// Array Lang-ID => navID *********************************************
-
-# meta tag einstellungen
-$morpheus["author"]			= "Freiheit Gruppe, Bjoern Knetter, CMS Morpheus";
-$morpheus["page-topic"]		= "";
-$morpheus["publisher"]		= "";
-
-$morpheus["foto"]			= 0;
-$morpheus["ebene"]			= 3;
-
-// NEW array for SEARCH PAGE
-// Array Lang-ID => navID *********************************************
-$morpheus["search_ID"]		= array("de"=>24, "en"=>79, );
-$morpheus["news_ID"]		= array("de"=>25, "en"=>79, );
-
-?>
+define('DB_DRIVER', 'mysqli');
+define('DB_HOSTNAME', 'localhost');
+define('DB_USERNAME', 'm2_dev');
+define('DB_PASSWORD', 'm2_D3v#');
+define('DB_DATABASE', 'm2_dev');
+define('DB_PORT', '3306');
+define('DB_PREFIX', 'oc_');
