@@ -23,9 +23,25 @@ require_once DIR_APPLICATION . '/controller/paypalpluscw/abstract_method.php';
 
 class ControllerExtensionPaymentPayPalPlusCwPayPalPlus extends ControllerPaymentPayPalPlusCwAbstract
 {
-
+	
+	protected function validate() {
+		if (!$this->user->hasPermission('modify', $this->getModuleBasePath() . '_'  . strtolower($this->getMachineName()))) {
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
+	
+		if (!$this->error) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	protected function getModuleBasePath() {
 		return 'extension/payment/paypalpluscw';
+	}
+	
+	protected function getModuleParentPath() {
+		return 'marketplace/extension';
 	}
 	
 	public function getMachineName() {

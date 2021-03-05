@@ -87,7 +87,7 @@ class Document {
                // set shipping free or not free
                // if germany
                if ($country_id == 81){
-                    if ((int) $totals[0]['value'] >= 30) {
+                    if ((int) $totals[0]['value'] >= MIN_SHIP_GERMANY) {
                          $totals[1]['title'] = 'Versand';
                          $totals[1]['value'] = 0;
 
@@ -115,8 +115,9 @@ class Document {
                     $totals[2]['value'] = $value_;
                }
                 
-               print_r($totals);
+               //print_r($totals);
           } else {
+               print_r($totals);
                $totals[4] = $totals[3];
 
                $value1 = $totals[0]['value'];

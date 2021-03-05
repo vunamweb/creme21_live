@@ -19,15 +19,10 @@
  *
 */
 
-require_once DIR_APPLICATION . '/controller/paypalpluscw/abstract_method.php';
+require_once DIR_APPLICATION . '/model/paypalpluscw/abstract_method.php';
 
-class ControllerExtensionPaymentPayPalPlusCwPayPal extends ControllerPaymentPayPalPlusCwAbstract
+class ModelExtensionPaymentPayPalPlusCwPayPal extends ModelPaymentPayPalPlusCwAbstract
 {
-
-	protected function getModuleBasePath() {
-		return 'extension/payment/paypalpluscw';
-	}
-	
 	public function getMachineName() {
 		return 'PayPal';
 	}
@@ -38,3 +33,4 @@ class ControllerExtensionPaymentPayPalPlusCwPayPal extends ControllerPaymentPayP
 		return 'PayPal';
 	}
 }
+
