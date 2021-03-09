@@ -26,7 +26,7 @@ Options -Indexes
 RewriteEngine On
 # If your opencart installation does not run on the main web folder make sure you folder it does run in ie. / becomes /shop/
 
-RewriteBase /
+RewriteBase /shop/creme21_live/shop/
 RewriteRule ^groessentabelle index.php?route=information/information&page=18&information_id=100
 RewriteRule ^bedienungsanleitung index.php?route=information/information&page=19&information_id=100
 RewriteRule ^pruefergebnisse index.php?route=information/information&page=24&information_id=100

@@ -229,6 +229,10 @@ class ControllerSaleOrder extends Controller {
 		$results = $this->model_sale_order->getOrders($filter_data);
 
 		foreach ($results as $result) {
+			//print_r($result);
+			if($result['total'] >= 30)
+			  $result['total'] = $result['total'] - 4.95;
+
 			$data['orders'][] = array(
 				'order_id'      => $result['order_id'],
 				'customer'      => $result['customer'],
@@ -973,7 +977,7 @@ class ControllerSaleOrder extends Controller {
 
 			$totals = $this->model_sale_order->getOrderTotals($this->request->get['order_id']);
             
-            $this->document->displayOrder($totals);
+            $this->document->displayOrder($totals, $this->session->data['shipping_address']['country_id']);
 
 			foreach ($totals as $total) {
 				$data['totals'][] = array(
@@ -981,6 +985,8 @@ class ControllerSaleOrder extends Controller {
 					'text'  => $this->currency->format($total['value'], $order_info['currency_code'], $order_info['currency_value'])
 				);
 			}
+
+			//$this->document->displayOrderAgain($data['totals'], $totals);
 
 			$data['comment'] = nl2br($order_info['comment']);
 
@@ -1966,7 +1972,7 @@ class ControllerSaleOrder extends Controller {
 
 				$totals = $this->model_sale_order->getOrderTotals($order_id);
                 
-                $this->document->displayOrder($totals);
+                $this->document->displayOrder($totals, $this->session->data['shipping_address']['country_id']);
 
 				foreach ($totals as $total) {
 					$total_data[] = array(
@@ -2214,13 +2220,15 @@ class ControllerSaleOrder extends Controller {
 				$total_data = array();
 
 				$totals = $this->model_sale_order->getOrderTotals($order_id);
+
+				$this->document->displayOrder($totals, $this->session->data['shipping_address']['country_id']);
                 
-                $totals[3] = $totals[2];
+                /*$totals[3] = $totals[2];
                 $value1= (int) $totals[0]['value'];
                 $value2= (int) $totals[1]['value'];
                 $value_ = ($value1 + $value2) - ($value1 + $value2)/1.077; 
                 $totals[2]['title'] = 'enthaltene MwSt. (7,7%)';
-                $totals[2]['value'] = $value_;
+                $totals[2]['value'] = $value_;*/
 
 				foreach ($totals as $total) {
 					$total_data[] = array(

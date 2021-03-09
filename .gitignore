@@ -2,3 +2,4 @@
 *.log
 shop/system/storage/logs/error.log
 *.log
+*.log
